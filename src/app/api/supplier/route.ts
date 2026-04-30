@@ -1,13 +1,36 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { z } from 'zod';
+
+const supplierSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid company email address"),
+  category: z.string().optional(),
+  assets: z.string().min(10, "Please provide more details about your assets"),
+  location: z.string().optional(),
+  website: z.string().max(0, "Bot detected") // Honeypot
+});
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, category, assets, location } = body;
 
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
+    // Validate request body
+    const validatedData = supplierSchema.safeParse(body);
+
+    if (!validatedData.success) {
+      return NextResponse.json({ 
+        error: 'Validation failed', 
+        details: validatedData.error.flatten().fieldErrors 
+      }, { status: 400 });
+    }
+
+    const { name, email, category, assets, location } = validatedData.data;
+
+    // Validate environment variables
+    if (!process.env.ZOHO_EMAIL || !process.env.ZOHO_PASSWORD) {
+      console.error('SMTP configuration error: ZOHO_EMAIL or ZOHO_PASSWORD is not set.');
+      return NextResponse.json({ error: 'Mail server configuration missing' }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
@@ -18,6 +41,8 @@ export async function POST(request: Request) {
         user: process.env.ZOHO_EMAIL,
         pass: process.env.ZOHO_PASSWORD,
       },
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,   // 10 seconds
     });
 
     const mailOptions = {
@@ -44,7 +69,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true }, { status: 200 });
 
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const err = error as any;
+    console.error('Error sending supplier email:', {
+      message: err.message,
+      code: err.code,
+      command: err.command
+    });
+    return NextResponse.json(
+      { error: 'Failed to send email. Please try again later.' }, 
+      { status: 500 }
+    );
   }
 }

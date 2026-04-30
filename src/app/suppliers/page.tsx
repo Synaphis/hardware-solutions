@@ -6,7 +6,8 @@ import styles from './Suppliers.module.css';
 export default function SuppliersPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
-    name: '', email: '', category: 'Servers & Computing', assets: '', location: ''
+    name: '', email: '', category: 'Servers & Computing', assets: '', location: '',
+    website: '' // Honeypot field
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -24,7 +25,10 @@ export default function SuppliersPage() {
       });
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', category: 'Servers & Computing', assets: '', location: '' });
+        setFormData({ 
+          name: '', email: '', category: 'Servers & Computing', assets: '', location: '',
+          website: ''
+        });
       } else {
         setStatus('error');
       }
@@ -125,6 +129,15 @@ export default function SuppliersPage() {
                   </div>
 
                   <button type="submit" disabled={status === 'loading'} className={styles.submitBtn}>
+                    <input 
+                      type="text" 
+                      name="website" 
+                      className={styles.hidden} 
+                      tabIndex={-1} 
+                      autoComplete="off" 
+                      value={formData.website} 
+                      onChange={handleChange} 
+                    />
                     {status === 'loading' ? 'Submitting...' : <><>Request Asset Valuation</> <ArrowRight size={18} /></>}
                   </button>
                   

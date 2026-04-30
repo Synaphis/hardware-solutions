@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './EnquiryForm.module.css';
 
@@ -8,8 +8,29 @@ export default function EnquiryForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', phone: '',
-    category: '', partNumber: '', brand: '', quantity: '', message: ''
+    category: '', partNumber: '', brand: '', quantity: '', message: '',
+    website: '' // Honeypot field
   });
+
+  const [isCTO, setIsCTO] = useState(false);
+
+  // Check for CTO trigger via hash
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#cto') {
+        setIsCTO(true);
+        setFormData(prev => ({ ...prev, category: 'cto-build' }));
+        // Ensure the form is visible and scrolled into view
+        const element = document.getElementById('enquiry-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -26,7 +47,12 @@ export default function EnquiryForm() {
       });
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', company: '', phone: '', category: '', partNumber: '', brand: '', quantity: '', message: '' });
+        setFormData({ 
+          name: '', email: '', company: '', phone: '', 
+          category: isCTO ? 'cto-build' : '', 
+          partNumber: '', brand: '', quantity: '', message: '',
+          website: ''
+        });
       } else {
         setStatus('error');
       }
@@ -40,12 +66,15 @@ export default function EnquiryForm() {
     { slug: 'storage-systems', title: 'Storage Systems' },
     { slug: 'networking-equipment', title: 'Networking Equipment' },
     { slug: 'server-components', title: 'Server Components' },
+    { slug: 'cto-build', title: 'Configure-to-Order (CTO) Build' },
     { slug: 'workstations-computing', title: 'Workstations & Computing' },
     { slug: 'data-center-infrastructure', title: 'Data Center Infrastructure' }
   ];
 
   return (
-    <section id="enquiry-form" className={styles.enquiry}>
+    <>
+      <div id="cto" style={{ scrollMarginTop: '100px' }} />
+      <section id="enquiry-form" className={styles.enquiry}>
       <div className="container">
         <motion.div 
           className={styles.inner}
@@ -57,9 +86,13 @@ export default function EnquiryForm() {
           {/* Left side */}
           <div className={styles.left}>
             <span className="caption">Get in Touch</span>
-            <h2 className="sectionTitle">Request a Quote.</h2>
+            <h2 className="sectionTitle">
+              {isCTO ? 'Start Your CTO Build.' : 'Request a Quote.'}
+            </h2>
             <p className="sectionSubtitle">
-              Specify part numbers, quantities, or describe your infrastructure requirements. Our team typically responds within 4 business hours.
+              {isCTO 
+                ? 'Specify your chassis, CPU, memory, and storage requirements. Our lab engineers will build and test your configuration within 24-48 hours.'
+                : 'Specify part numbers, quantities, or describe your infrastructure requirements. Our team typically responds within 4 business hours.'}
             </p>
 
             <div className={styles.formNote}>
@@ -123,17 +156,39 @@ export default function EnquiryForm() {
                 <input type="text" id="brand" name="brand" className={styles.input} value={formData.brand} onChange={handleChange} placeholder="e.g., HPE, Dell, Cisco" />
               </div>
               <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                <label className={styles.label} htmlFor="message">Requirements / Message</label>
-                <textarea id="message" name="message" className={styles.textarea} value={formData.message} onChange={handleChange} placeholder="Describe specifications, configurations, or any other details..." />
+                <label className={styles.label} htmlFor="message">
+                  {isCTO ? 'Build Specifications / Requirements' : 'Requirements / Message'}
+                </label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  className={styles.textarea} 
+                  value={formData.message} 
+                  onChange={handleChange} 
+                  placeholder={isCTO 
+                    ? "e.g., Dual Gold 6230, 256GB RAM, 10x 1.92TB SSD, Mellanox 25GbE..." 
+                    : "Describe specifications, configurations, or any other details..."} 
+                />
               </div>
 
               <button type="submit" disabled={status === 'loading'} className={`${styles.submitBtn} ${styles.fullWidth}`}>
-                {status === 'loading' ? <div className={styles.spinner}></div> : 'Submit Inquiry'}
+                <input 
+                  type="text" 
+                  name="website" 
+                  className={styles.hidden} 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  value={formData.website} 
+                  onChange={handleChange} 
+                />
+
+                {status === 'loading' ? <div className={styles.spinner}></div> : isCTO ? 'Submit Build Request' : 'Submit Inquiry'}
               </button>
             </form>
           </div>
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

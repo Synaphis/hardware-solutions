@@ -77,7 +77,7 @@ export default function CTOFeature() {
                   <span>Estimated Build Time:</span>
                   <strong>24-48 Hours</strong>
                 </div>
-                <button className={styles.buildBtn}>Start My Build</button>
+                <a href="#cto" className={styles.buildBtn}>Start My Build</a>
               </div>
             </div>
 

@@ -51,10 +51,10 @@ export default function Footer() {
             <h4 className={styles.colTitle}>Contact</h4>
             <ul className={styles.linkList}>
               <li className={styles.linkItem}>
-                <a href="mailto:procurement@aorixis.com">procurement@aorixis.com</a>
+                <a href="mailto:procurement@aorixis.com">info@aorixis.com</a>
               </li>
               <li className={styles.linkItem}>
-                <a href="tel:+18005550199">+1 (800) 555-0199</a>
+                <a href="tel:+18005550199">+1 (888) 788-7812</a>
               </li>
             </ul>
             <div className={styles.socials}>
