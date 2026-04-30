@@ -5,6 +5,7 @@ import { z } from 'zod';
 const supplierSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid company email address"),
+  phone: z.string().min(5, "Valid contact number required"),
   category: z.string().optional(),
   assets: z.string().min(10, "Please provide more details about your assets"),
   location: z.string().optional(),
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
       }, { status: 400 });
     }
 
-    const { name, email, category, assets, location } = validatedData.data;
+    const { name, email, phone, category, assets, location } = validatedData.data;
 
     // Validate environment variables
     if (!process.env.ZOHO_EMAIL || !process.env.ZOHO_PASSWORD) {
@@ -35,14 +36,14 @@ export async function POST(request: Request) {
 
     const transporter = nodemailer.createTransport({
       host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com',
-      port: 465,
-      secure: true,
+      port: 587,
+      secure: false, // Use STARTTLS
       auth: {
         user: process.env.ZOHO_EMAIL,
         pass: process.env.ZOHO_PASSWORD,
       },
-      connectionTimeout: 10000, // 10 seconds
-      greetingTimeout: 10000,   // 10 seconds
+      connectionTimeout: 20000, // Increased to 20s
+      greetingTimeout: 20000,   // Increased to 20s
     });
 
     const mailOptions = {
@@ -56,6 +57,7 @@ export async function POST(request: Request) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px 0; color: #666; width: 160px;">Contact Name</td><td style="padding: 8px 0; font-weight: bold;">${name}</td></tr>
             <tr><td style="padding: 8px 0; color: #666;">Company Email</td><td style="padding: 8px 0;">${email}</td></tr>
+            <tr><td style="padding: 8px 0; color: #666;">Contact Phone</td><td style="padding: 8px 0;">${phone}</td></tr>
             <tr style="border-top: 1px solid #eee;"><td style="padding: 8px 0; color: #666;">Asset Categories</td><td style="padding: 8px 0;">${category || '—'}</td></tr>
             <tr><td style="padding: 8px 0; color: #666;">Equipment Location</td><td style="padding: 8px 0;">${location || '—'}</td></tr>
           </table>

@@ -6,7 +6,7 @@ const quoteSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid work email address"),
   company: z.string().optional(),
-  phone: z.string().optional(),
+  phone: z.string().min(5, "Valid contact number required"),
   category: z.string().optional(),
   partNumber: z.string().optional(),
   brand: z.string().optional(),
@@ -39,14 +39,14 @@ export async function POST(request: Request) {
 
     const transporter = nodemailer.createTransport({
       host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com',
-      port: 465,
-      secure: true, // Use SSL
+      port: 587,
+      secure: false, // Use STARTTLS
       auth: {
         user: process.env.ZOHO_EMAIL,
         pass: process.env.ZOHO_PASSWORD,
       },
-      connectionTimeout: 10000, // 10 seconds
-      greetingTimeout: 10000,   // 10 seconds
+      connectionTimeout: 20000, // Increased to 20s
+      greetingTimeout: 20000,   // Increased to 20s
     });
 
     const mailOptions = {
