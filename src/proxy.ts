@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server';
  * Next.js Middleware
  * Runs on the Edge/Node.js runtime.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // Clone request headers to modify them if needed
   const requestHeaders = new Headers(request.headers);
   
