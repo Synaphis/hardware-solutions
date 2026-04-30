@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import { ArrowRight } from 'lucide-react';
 import styles from './Footer.module.css';
 
 
@@ -51,15 +51,24 @@ export default function Footer() {
           </div>
 
           <div className={styles.column}>
-            <h4 className={styles.colTitle}>Contact</h4>
+            <h4 className={styles.colTitle}>Support</h4>
             <ul className={styles.linkList}>
               <li className={styles.linkItem}>
-                <a href="mailto:procurement@aorixis.com">info@aorixis.com</a>
+                <a href="mailto:info@aorixis.com">info@aorixis.com</a>
               </li>
               <li className={styles.linkItem}>
-                <a href="tel:+18005550199">+1 (888) 788-7812</a>
+                <a href="tel:+18887887812">+1 (888) 788-7812</a>
               </li>
             </ul>
+          </div>
+
+          <div className={styles.column}>
+            <h4 className={styles.colTitle}>Stay Updated</h4>
+            <p className={styles.newsletterText}>Get our weekly inventory stock list and market pricing.</p>
+            <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
+               <input type="email" placeholder="Work email..." className={styles.newsletterInput} required />
+               <button type="submit" className={styles.newsletterBtn} aria-label="Subscribe"><ArrowRight size={16} /></button>
+            </form>
             <div className={styles.socials}>
               <a href="#" className={styles.socialIcon} aria-label="LinkedIn"><LinkedinIcon size={18} /></a>
               <a href="#" className={styles.socialIcon} aria-label="Twitter"><TwitterIcon size={18} /></a>

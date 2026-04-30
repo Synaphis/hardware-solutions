@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
 import Brands from '@/components/Brands';
 import ProductCategories from '@/components/ProductCategories';
+import LeadMagnet from '@/components/LeadMagnet';
 import TrustSignals from '@/components/TrustSignals';
 import CTOFeature from '@/components/CTOFeature';
 import Services from '@/components/Services';
@@ -39,6 +40,7 @@ export default function Home() {
       <CTOFeature />
       <Brands />
       <ProductCategories />
+      <LeadMagnet />
       <Services />
       <WhyUs />
       <EnquiryForm />
