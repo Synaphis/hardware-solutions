@@ -6,7 +6,7 @@ import styles from './Suppliers.module.css';
 export default function SuppliersContent() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
-    name: '', email: '', category: 'Servers & Computing', assets: '', location: '',
+    name: '', email: '', phone: '', category: 'Servers & Computing', assets: '', location: '',
     website: '' // Honeypot field
   });
 
@@ -26,7 +26,7 @@ export default function SuppliersContent() {
       if (response.ok) {
         setStatus('success');
         setFormData({ 
-          name: '', email: '', category: 'Servers & Computing', assets: '', location: '',
+          name: '', email: '', phone: '', category: 'Servers & Computing', assets: '', location: '',
           website: ''
         });
       } else {
@@ -104,6 +104,10 @@ export default function SuppliersContent() {
                     <div className={styles.formGroup}>
                        <label>Company Email</label>
                        <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@enterprise.com" />
+                    </div>
+                    <div className={styles.formGroup}>
+                       <label>Contact Phone</label>
+                       <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" />
                     </div>
                   </div>
 

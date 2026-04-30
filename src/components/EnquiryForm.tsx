@@ -130,8 +130,8 @@ export default function EnquiryForm() {
                 <input type="text" id="company" name="company" className={styles.input} value={formData.company} onChange={handleChange} placeholder="Company Ltd." />
               </div>
               <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" className={styles.input} value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" />
+                <label className={styles.label} htmlFor="phone">Phone *</label>
+                <input required type="tel" id="phone" name="phone" className={styles.input} value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" />
               </div>
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="category">Product Category</label>

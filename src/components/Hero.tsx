@@ -49,7 +49,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            B2B partner for certified Tier-1 IT infrastructure. Reduce hardware CAPEX by 30–50% with our expert-configured, rigorously tested, and globally shipped enterprise solutions.
+            B2B supplier of certified Tier-1 IT infrastructure. Extensive inventory, expert configuration, technical reporting, and global logistics for data centers worldwide.
           </motion.p>
 
           <motion.div 
