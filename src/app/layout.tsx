@@ -74,7 +74,7 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth">
       <body>
         <Navbar />
-        <main style={{ marginTop: 'var(--nav-height)' }}>
+        <main className="mainContent">
           {children}
         </main>
         <Footer />
