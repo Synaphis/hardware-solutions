@@ -2,11 +2,10 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * Next.js 16 Proxy (formerly Middleware)
- * Renamed to 'proxy' to clarify network boundary and routing focus.
- * Runs on the Node.js runtime by default.
+ * Next.js Middleware
+ * Runs on the Edge/Node.js runtime.
  */
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   // Clone request headers to modify them if needed
   const requestHeaders = new Headers(request.headers);
   
