@@ -1,0 +1,208 @@
+.page {
+  padding: 6rem 0 10rem;
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.heroSection {
+  margin-bottom: 6rem;
+  max-width: 800px;
+}
+
+.accentText {
+  color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+.cardIcon {
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.formColumn {
+  position: relative;
+}
+
+.formContainer {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 3.5rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.formPulse {
+  width: 8px; height: 8px;
+  background: var(--color-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formGroup label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.formGroup input, .formGroup select, .formGroup textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.submitBtn {
+  background: #fff;
+  color: #000;
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.formNote {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.abstractBg {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  z-index: 1;
+}
+
+.circularSection {
+  margin-top: 12rem;
+  padding: 8rem 0;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.circularContent {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.certIcon {
+  width: 80px; height: 80px;
+  background: rgba(0, 230, 118, 0.05);
+  display: flex; justify-content: center; align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.1);
+}
+
+.circularContent h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.circularContent p {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}

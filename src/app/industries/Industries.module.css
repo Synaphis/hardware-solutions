@@ -1,0 +1,157 @@
+.page {
+  padding: 6rem 0 10rem;
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.heroSection {
+  margin-bottom: 6rem;
+  max-width: 800px;
+}
+
+.accentText {
+  color: var(--color-accent);
+}
+
+.industryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-bottom: 10rem;
+}
+
+.indCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.indCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.indBadge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.indIcon {
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.indTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.indDesc {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  flex: 1;
+}
+
+.indFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.indFeature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.featDot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+
+.indFooter {
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.exploreLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  transition: all var(--transition-fast);
+}
+
+.exploreLink:hover {
+  color: var(--color-accent);
+  transform: translateX(5px);
+}
+
+.indAbstractBg {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.expertiseStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  padding-top: 6rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.expItem {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.expItem h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.expItem p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .expertiseStrip {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

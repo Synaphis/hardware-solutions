@@ -1,0 +1,146 @@
+.section {
+  padding: var(--section-pad) 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.content {
+  max-width: 600px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.stepNum {
+  width: 42px; height: 42px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 0.8rem; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+
+.step h4 {
+  font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem;
+}
+
+.step p {
+  font-size: 0.85rem; color: var(--color-text-secondary);
+}
+
+.visualColumn {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.configCard {
+  position: relative;
+  z-index: 2;
+  width: 400px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+
+.configHeader {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.optionsGrid {
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+
+.optionItem {
+  display: flex; align-items: center; gap: 1.25rem;
+}
+
+.optIcon {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.optTexts {
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+
+.optLabel {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--color-text-muted);
+}
+
+.optVal {
+  font-size: 0.9rem; font-weight: 700; color: #fff;
+}
+
+.configFooter {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.totalRow {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.totalRow span { color: var(--color-text-secondary); }
+.totalRow strong { color: var(--color-green); font-weight: 800; }
+
+.buildBtn {
+  width: 100%;
+  background: #fff; color: #000;
+  padding: 1rem; font-size: 0.8rem; font-weight: 900;
+  text-transform: uppercase; border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.buildBtn:hover {
+  background: var(--color-purple);
+  color: #fff;
+}
+
+.blob {
+  position: absolute;
+  width: 300px; height: 300px;
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blobBlue { background: var(--color-blue); top: -50px; left: -50px; }
+.blobPurple { background: var(--color-purple); bottom: -50px; right: -50px; }
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+  .visualColumn { padding-top: 4rem; }
+  .configCard { width: 100%; }
+}

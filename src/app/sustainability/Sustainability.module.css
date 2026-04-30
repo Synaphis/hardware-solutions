@@ -1,0 +1,71 @@
+.page {
+  padding: 120px 0;
+}
+
+.header {
+  margin-bottom: 80px;
+  max-width: 800px;
+}
+
+.accentText {
+  color: var(--color-green);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 60px;
+  background: rgba(46, 213, 115, 0.05);
+  border-radius: 20px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.statNum {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.statItem p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-green);
+  letter-spacing: 1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+}
