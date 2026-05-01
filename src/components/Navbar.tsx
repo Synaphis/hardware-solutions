@@ -32,11 +32,10 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
 
-        {/* LOGO + NAME */}
-        <Link href="/" className={styles.logo} aria-label="Home">
+        <Link href="/" className={styles.logo}>
           <Image
             src="/logo.svg"
-            alt="AORIXIS logo"
+            alt="logo"
             width={48}
             height={48}
             className={styles.logoImage}
@@ -45,35 +44,23 @@ export default function Navbar() {
           <span className={styles.brandName}>AORIXIS</span>
         </Link>
 
-        {/* NAV LINKS */}
         <nav className={`${styles.links} ${menuOpen ? styles.linksOpen : ''}`}>
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`${styles.link} ${pathname === l.href ? styles.linkActive : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link key={l.href} href={l.href} className={styles.link}>
               {l.label}
             </Link>
           ))}
 
-          <Link
-            href="/#enquiry-form"
-            className={styles.quoteBtn}
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link href="/#enquiry-form" className={styles.quoteBtn}>
             Request Quote
           </Link>
         </nav>
 
-        {/* MOBILE MENU BUTTON */}
         <button
           className={styles.menuToggle}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
+          onClick={() => setMenuOpen(v => !v)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X /> : <Menu />}
         </button>
 
       </div>
