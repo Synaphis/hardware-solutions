@@ -207,6 +207,130 @@
   }
 }
 
+@media (max-width: 768px) {
+  .page {
+    padding: 4rem 0 5rem;
+  }
+
+  .heroSection {
+    margin-bottom: 3.5rem;
+  }
+
+  .grid {
+    gap: 3rem;
+  }
+
+  .card {
+    padding: 1.75rem;
+  }
+
+  .formContainer {
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .formHeader {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .form {
+    gap: 1.5rem;
+  }
+
+  .circularSection {
+    margin-top: 6rem;
+    padding: 4rem 0;
+  }
+
+  .circularContent {
+    gap: 1.5rem;
+  }
+
+  .circularContent h2 {
+    font-size: 1.8rem;
+  }
+
+  .circularContent p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .abstractBg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 3rem 0 4rem;
+  }
+
+  .heroSection {
+    margin-bottom: 2.5rem;
+  }
+
+  .grid {
+    gap: 2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+  }
+
+  .formContainer {
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .formHeader {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .formGroup input, .formGroup select, .formGroup textarea {
+    padding: 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .submitBtn {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .circularSection {
+    margin-top: 4rem;
+    padding: 3rem 0;
+  }
+
+  .circularContent h2 {
+    font-size: 1.5rem;
+  }
+
+  .circularContent p {
+    font-size: 0.9rem;
+  }
+
+  .certIcon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .hidden {
   display: none !important;
   visibility: hidden;
