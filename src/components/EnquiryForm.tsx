@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './EnquiryForm.module.css';
 
 export default function EnquiryForm() {
+  const reduced = useReducedMotion();
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
@@ -71,18 +73,20 @@ export default function EnquiryForm() {
     { slug: 'data-center-infrastructure', title: 'Data Center Infrastructure' }
   ];
 
+  const Inner = reduced ? 'div' : motion.div;
+  const innerProps = reduced ? {} : {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.6 }
+  };
+
   return (
     <>
       <div id="cto" style={{ scrollMarginTop: '100px' }} />
       <section id="enquiry-form" className={styles.enquiry}>
       <div className="container">
-        <motion.div 
-          className={styles.inner}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <Inner className={styles.inner} {...innerProps}>
           {/* Left side */}
           <div className={styles.left}>
             <span className="caption">Get in Touch</span>
@@ -186,7 +190,7 @@ export default function EnquiryForm() {
               </button>
             </form>
           </div>
-        </motion.div>
+        </Inner>
       </div>
     </section>
     </>

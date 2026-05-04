@@ -1,9 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Wrench, CreditCard, Plane, Trash2, Leaf } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './WhyUs.module.css';
 
 export default function WhyUs() {
+  const reduced = useReducedMotion();
+
   const items = [
     {
       title: "Extensive Inventory & QA",
@@ -43,56 +46,64 @@ export default function WhyUs() {
     }
   ];
 
+  const Header = reduced ? 'div' : motion.div;
+  const headerProps = reduced ? {} : {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.5 }
+  };
+
+  const Grid = reduced ? 'div' : motion.div;
+  const gridProps = reduced ? {} : {
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
+  };
+
+  const Banner = reduced ? 'div' : motion.div;
+  const bannerProps = reduced ? {} : {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.5 }
+  };
+
   return (
     <section id="why-us" className={styles.whyUs}>
       <div className="container">
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-        >
+        <Header className={styles.header} {...headerProps}>
           <span className="caption"><span className="captionDot" />Why Partner With Us</span>
           <h2 className="sectionTitle">Built for Enterprise Procurement.</h2>
           <p className="sectionSubtitle">
             We operate specifically for B2B. From flexible payment terms to certified asset disposal, everything is structured around how enterprise IT teams actually buy.
           </p>
-        </motion.div>
+        </Header>
 
-        <motion.div
-          className={styles.grid}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {items.map((item, idx) => (
-            <motion.div
-              key={idx}
-              className={styles.item}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08, duration: 0.4 }}
-            >
-              <div className={styles.itemIcon} style={{ color: item.color }}>{item.icon}</div>
-              <div className={styles.itemContent}>
-                <h3 className={styles.itemTitle}>{item.title}</h3>
-                <p className={styles.itemDesc}>{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <Grid className={styles.grid} {...gridProps}>
+          {items.map((item, idx) => {
+            const Item = reduced ? 'div' : motion.div;
+            const itemProps = reduced ? {} : {
+              initial: { opacity: 0, y: 15 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { delay: idx * 0.08, duration: 0.4 }
+            };
+            return (
+              <Item key={idx} className={styles.item} {...itemProps}>
+                <div className={styles.itemIcon} style={{ color: item.color }}>{item.icon}</div>
+                <div className={styles.itemContent}>
+                  <h3 className={styles.itemTitle}>{item.title}</h3>
+                  <p className={styles.itemDesc}>{item.desc}</p>
+                </div>
+              </Item>
+            );
+          })}
+        </Grid>
 
         {/* Payment Terms Banner */}
-        <motion.div
-          className={styles.paymentBanner}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <Banner className={styles.paymentBanner} {...bannerProps}>
           <div className={styles.paymentLeft}>
             <h3 className={styles.paymentTitle}>Payment Methods & Terms</h3>
             <p className={styles.paymentSubtitle}>Flexible options for enterprise procurement workflows.</p>
@@ -105,7 +116,7 @@ export default function WhyUs() {
             <span className={styles.method}>Purchase Order</span>
             <span className={styles.method}>PayPal</span>
           </div>
-        </motion.div>
+        </Banner>
       </div>
     </section>
   );

@@ -1,9 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Wrench, Shield, GitMerge } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './Services.module.css';
 
 export default function Services() {
+  const reduced = useReducedMotion();
+
   const services = [
     {
       title: "Hardware Procurement",
@@ -25,38 +28,42 @@ export default function Services() {
     }
   ];
 
+  const Header = reduced ? 'div' : motion.div;
+  const headerProps = reduced ? {} : {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.5 }
+  };
+
   return (
     <section id="services" className={styles.services}>
       <div className="container">
-        <motion.div 
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-        >
+        <Header className={styles.header} {...headerProps}>
           <span className="caption"><span className="captionDot"/>What We Do</span>
           <h2 className="sectionTitle">End-to-End Hardware Solutions.</h2>
           <p className="sectionSubtitle">
             From procurement to configuration and post-sales support, we handle the entire hardware lifecycle.
           </p>
-        </motion.div>
+        </Header>
 
         <div className={styles.grid}>
-          {services.map((service, idx) => (
-            <motion.div 
-              key={idx} 
-              className={styles.card}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-            >
-              <div className={styles.iconWrapper} style={{ color: service.color }}>{service.icon}</div>
-              <h3 className={styles.cardTitle}>{service.title}</h3>
-              <p className={styles.cardText}>{service.description}</p>
-            </motion.div>
-          ))}
+          {services.map((service, idx) => {
+            const Card = reduced ? 'div' : motion.div;
+            const cardProps = reduced ? {} : {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { delay: idx * 0.1, duration: 0.5 }
+            };
+            return (
+              <Card key={idx} className={styles.card} {...cardProps}>
+                <div className={styles.iconWrapper} style={{ color: service.color }}>{service.icon}</div>
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.cardText}>{service.description}</p>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

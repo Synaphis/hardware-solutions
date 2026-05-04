@@ -1,9 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Truck, Clock, Award, Globe, HeartHandshake } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './TrustSignals.module.css';
 
 export default function TrustSignals() {
+  const reduced = useReducedMotion();
+
   const signals = [
     {
       icon: <ShieldCheck size={24} />,
@@ -47,24 +50,30 @@ export default function TrustSignals() {
     <section className={styles.trustSection}>
       <div className="container">
         <div className={styles.grid}>
-          {signals.map((signal, idx) => (
-            <motion.div 
-              key={idx}
-              className={styles.signalCard}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-            >
-              <div className={styles.iconWrapper} style={{ color: signal.color }}>
-                {signal.icon}
-              </div>
-              <div className={styles.content}>
-                <h3 className={styles.title}>{signal.title}</h3>
-                <p className={styles.text}>{signal.text}</p>
-              </div>
-            </motion.div>
-          ))}
+          {signals.map((signal, idx) => {
+            const Wrapper = reduced ? 'div' : motion.div;
+            const motionProps = reduced ? {} : {
+              initial: { opacity: 0, scale: 0.95 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: true },
+              transition: { delay: idx * 0.05 }
+            };
+            return (
+              <Wrapper
+                key={idx}
+                className={styles.signalCard}
+                {...motionProps}
+              >
+                <div className={styles.iconWrapper} style={{ color: signal.color }}>
+                  {signal.icon}
+                </div>
+                <div className={styles.content}>
+                  <h3 className={styles.title}>{signal.title}</h3>
+                  <p className={styles.text}>{signal.text}</p>
+                </div>
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>

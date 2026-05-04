@@ -126,11 +126,6 @@
   transition: all var(--transition-fast);
 }
 
-.buildBtn:hover {
-  background: var(--color-purple);
-  color: #fff;
-}
-
 .blob {
   position: absolute;
   width: 300px; height: 300px;
@@ -146,5 +141,13 @@
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr; }
   .visualColumn { padding-top: 4rem; }
-  .configCard { width: 100%; }
+  .configCard { width: 100%; box-shadow: none; }
+  .blob { display: none; }
+}
+
+@media (hover: hover) {
+  .buildBtn:hover {
+    background: var(--color-purple);
+    color: #fff;
+  }
 }

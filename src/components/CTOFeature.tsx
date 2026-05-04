@@ -1,9 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Settings, Cpu, Database, Zap, MemoryStick } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './CTOFeature.module.css';
 
 export default function CTOFeature() {
+  const reduced = useReducedMotion();
+
   const options = [
     { label: "Processor", value: "Dual Intel Xeon Platinum", color: "var(--color-blue)", icon: <Cpu size={20} /> },
     { label: "Memory", value: "1.5TB DDR4 2933MHz", color: "var(--color-purple)", icon: <MemoryStick size={20} /> },
@@ -55,22 +58,24 @@ export default function CTOFeature() {
               </div>
 
               <div className={styles.optionsGrid}>
-                {options.map((opt, idx) => (
-                  <motion.div
-                    key={idx}
-                    className={styles.optionItem}
-                    initial={{ x: 20, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                  >
-                    <div className={styles.optIcon} style={{ color: opt.color }}>{opt.icon}</div>
-                    <div className={styles.optTexts}>
-                      <span className={styles.optLabel}>{opt.label}</span>
-                      <span className={styles.optVal}>{opt.value}</span>
-                    </div>
-                  </motion.div>
-                ))}
+                {options.map((opt, idx) => {
+                  const Item = reduced ? 'div' : motion.div;
+                  const itemProps = reduced ? {} : {
+                    initial: { x: 20, opacity: 0 },
+                    whileInView: { x: 0, opacity: 1 },
+                    viewport: { once: true },
+                    transition: { delay: idx * 0.1 }
+                  };
+                  return (
+                    <Item key={idx} className={styles.optionItem} {...itemProps}>
+                      <div className={styles.optIcon} style={{ color: opt.color }}>{opt.icon}</div>
+                      <div className={styles.optTexts}>
+                        <span className={styles.optLabel}>{opt.label}</span>
+                        <span className={styles.optVal}>{opt.value}</span>
+                      </div>
+                    </Item>
+                  );
+                })}
               </div>
 
               <div className={styles.configFooter}>
@@ -83,8 +88,12 @@ export default function CTOFeature() {
             </div>
 
             {/* Background 3D blobs */}
-            <div className={styles.blob + ' ' + styles.blobBlue} />
-            <div className={styles.blob + ' ' + styles.blobPurple} />
+            {!reduced && (
+              <>
+                <div className={styles.blob + ' ' + styles.blobBlue} />
+                <div className={styles.blob + ' ' + styles.blobPurple} />
+              </>
+            )}
           </div>
 
         </div>
