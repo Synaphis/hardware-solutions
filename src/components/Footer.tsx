@@ -74,7 +74,7 @@ export default function Footer() {
             </ul>
 
             <div className={styles.socials}>
-              <a href="#"><LinkedinIcon size={18} /></a>
+              <a href="#https://www.linkedin.com/company/aorixis/"><LinkedinIcon size={18} /></a>
               <a href="#"><TwitterIcon size={18} /></a>
               <a href="#"><GithubIcon size={18} /></a>
               <a href="#"><YoutubeIcon size={18} /></a>

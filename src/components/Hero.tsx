@@ -1,21 +1,14 @@
 'use client';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { MouseEvent, useState, useEffect } from 'react';
+import { MouseEvent } from 'react';
 import { ChevronRight, Server, Database, Network } from 'lucide-react';
 import Link from 'next/link';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useReducedMotion();
 
-  useEffect(() => {
-    setMounted(true);
-    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -89,7 +82,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {(!mounted || !isMobile) && (
+        {!isMobile && (
           <motion.div 
             className={styles.visualColumn}
           style={{ rotateX, rotateY }}
