@@ -116,3 +116,18 @@ select {
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
 }
+.sectionTitle {
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #fff;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-top: 1.5rem;
+}

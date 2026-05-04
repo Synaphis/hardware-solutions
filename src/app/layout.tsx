@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://aorixis.com"),
   title: {
-    default: "Aorixis | Enterprise IT Hardware Solutions",
+    default: "Aorixis | Enterprise IT Hardware Authority | Certified Servers, Storage & Networking",
     template: "%s | Aorixis",
   },
 };

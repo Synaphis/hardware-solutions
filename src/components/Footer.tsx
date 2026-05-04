@@ -35,6 +35,8 @@ export default function Footer() {
                 width={40}
                 height={40}
                 className={styles.logo}
+                loading="eager"
+                priority
               />
               <span className={styles.brandName}>AORIXIS</span>
             </div>
@@ -85,7 +87,7 @@ export default function Footer() {
         {/* BOTTOM */}
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} AORIXIS</span>
-          <span>Enterprise IT Hardware Solutions</span>
+          <span>Enterprise IT Hardware Authority | Certified Servers, Storage & Networking</span>
         </div>
       </div>
     </footer>
