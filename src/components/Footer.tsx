@@ -35,7 +35,6 @@ export default function Footer() {
                 width={40}
                 height={40}
                 className={styles.logo}
-                loading="eager"
                 priority
               />
               <span className={styles.brandName}>AORIXIS</span>

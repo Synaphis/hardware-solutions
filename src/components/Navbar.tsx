@@ -39,7 +39,6 @@ export default function Navbar() {
             width={48}
             height={48}
             className={styles.logoImage}
-            loading="eager"
             priority
           />
           <span className={styles.brandName}>AORIXIS</span>
