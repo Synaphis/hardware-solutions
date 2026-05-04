@@ -61,6 +61,7 @@ export default function CTOFeature() {
                     className={styles.optionItem}
                     initial={{ x: 20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
                   >
                     <div className={styles.optIcon} style={{ color: opt.color }}>{opt.icon}</div>

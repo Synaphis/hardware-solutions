@@ -131,3 +131,12 @@ select {
   line-height: 1.8;
   margin-top: 1.5rem;
 }
+
+/* MOBILE PERFORMANCE SAFEGUARDS */
+@media (max-width: 768px) {
+  /* Disable heavy text and drop shadows that cause rendering lag on mobile */
+  * {
+    text-shadow: none !important;
+    filter: none !important;
+  }
+}
