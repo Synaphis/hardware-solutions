@@ -94,20 +94,22 @@
 .submitBtn {
   background: #fff;
   color: #000;
-  padding: 1rem;
-  font-weight: 700;
+  padding: 1.25rem;
+  font-weight: 950;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  transition: all var(--transition-fast);
-  margin-top: 0.5rem;
+  border-radius: 4px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+  margin-top: 1rem;
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: #e0e0e0;
+  background: var(--color-accent);
+  color: #fff;
 }
 
 .submitBtn:disabled {

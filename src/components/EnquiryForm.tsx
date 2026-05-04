@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './EnquiryForm.module.css';
 
@@ -186,7 +187,7 @@ export default function EnquiryForm() {
                   onChange={handleChange} 
                 />
 
-                {status === 'loading' ? <div className={styles.spinner}></div> : isCTO ? 'Submit Build Request' : 'Submit Inquiry'}
+                {status === 'loading' ? 'Submitting...' : <>{isCTO ? 'Submit Build Request' : 'Submit Inquiry'} <ArrowRight size={18} /></>}
               </button>
             </form>
           </div>
