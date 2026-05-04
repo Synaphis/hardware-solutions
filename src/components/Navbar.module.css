@@ -139,4 +139,10 @@
     width: 100%;
     text-align: center;
   }
+
+  .scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(0, 0, 0, 0.98);
+  }
 }

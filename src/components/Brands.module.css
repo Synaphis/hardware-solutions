@@ -35,11 +35,13 @@
   opacity: 0.4;
 }
 
-.brandName:hover {
-  opacity: 1;
-  color: #fff;
-  transform: scale(1.1);
-  text-shadow: 0 0 15px rgba(255,255,255,0.3);
+@media (hover: hover) {
+  .brandName:hover {
+    opacity: 1;
+    color: #fff;
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
+  }
 }
 
 @keyframes scroll {

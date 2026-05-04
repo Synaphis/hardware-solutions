@@ -204,4 +204,5 @@
   .content { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
   .rangeStrip { justify-content: center; }
   .visualColumn { display: none; }
+  .accentText { text-shadow: none; }
 }
