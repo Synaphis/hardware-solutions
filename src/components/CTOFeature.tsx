@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Settings, Cpu, Database, Zap, MemoryStick } from 'lucide-react';
+import { Settings, Cpu, Database, PlugZap, MemoryStick } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './CTOFeature.module.css';
 
@@ -11,7 +11,7 @@ export default function CTOFeature() {
     { label: "Processor", value: "Dual Intel Xeon Platinum", color: "var(--color-blue)", icon: <Cpu size={20} /> },
     { label: "Memory", value: "1.5TB DDR4 2933MHz", color: "var(--color-purple)", icon: <MemoryStick size={20} /> },
     { label: "Storage", value: "24x 3.84TB SAS SSD", color: "var(--color-orange)", icon: <Database size={20} /> },
-    { label: "Power", value: "Dual 1600W Titanium", color: "var(--color-yellow)", icon: <Zap size={20} /> },
+    { label: "Power", value: "Dual 1600W Titanium", color: "var(--color-yellow)", icon: <PlugZap size={20} /> },
   ];
 
   return (
