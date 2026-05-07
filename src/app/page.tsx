@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Brands from '@/components/Brands';
 import ProductCategories from '@/components/ProductCategories';
@@ -6,6 +7,15 @@ import CTOFeature from '@/components/CTOFeature';
 import Services from '@/components/Services';
 import WhyUs from '@/components/WhyUs';
 import EnquiryForm from '@/components/EnquiryForm';
+
+export const metadata: Metadata = {
+  title: "Aorixis | Enterprise IT Hardware Authority | Certified Servers, Storage & Networking",
+  description: "B2B supplier of certified Tier-1 IT infrastructure. Refurbished servers, storage, and networking with global shipping and technical support.",
+  alternates: {
+    canonical: "https://aorixis.com",
+  },
+  keywords: ["Enterprise Hardware", "Refurbished Servers US", "Data Center Storage", "B2B Hardware Supplier", "Refurbished Networking"],
+};
 
 export default function Home() {
   const jsonLd = {
