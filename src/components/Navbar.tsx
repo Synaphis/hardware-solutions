@@ -32,17 +32,17 @@ export default function Navbar() {
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
 
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="/logo.svg"
-            alt="logo"
-            width={48}
-            height={48}
-            className={styles.logoImage}
-            priority
-          />
-          <span className={styles.brandName}>AORIXIS</span>
-        </Link>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/logo.svg"
+              alt="Aorixis Logo - Enterprise IT Hardware Authority"
+              width={48}
+              height={48}
+              className={styles.logoImage}
+              priority
+            />
+            <span className={styles.brandName}>AORIXIS</span>
+          </Link>
 
         <nav className={`${styles.links} ${menuOpen ? styles.linksOpen : ''}`}>
           {links.map((l) => (

@@ -6,11 +6,12 @@ export const metadata: Metadata = {
   description: "Get market-leading valuations for your decommissioned IT hardware. Secure data destruction, global logistics, and fair market value for your enterprise assets.",
   keywords: ["ITAD", "IT Asset Disposition", "Sell Servers", "Data Center Liquidation", "Hardware Buyback"],
   alternates: {
-    canonical: "https://aorixis.com/suppliers",
+    canonical: "/suppliers",
   },
   openGraph: {
     title: "Sell Your Enterprise IT Assets | Aorixis Procurement",
     description: "Secure and sustainable retirement for your enterprise hardware. NIST-compliant data destruction and fair valuations.",
+    url: "https://aorixis.com/suppliers",
   }
 };
 

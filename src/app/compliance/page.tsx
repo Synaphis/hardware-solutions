@@ -6,7 +6,12 @@ export const metadata: Metadata = {
   description: "Rigorously tested enterprise hardware meeting global compliance standards. From NIST 800-88 data destruction to multi-tier diagnostic stress testing.",
   keywords: ["Compliance", "Quality Assurance", "Hardware Testing", "NIST 800-88", "ISO Certified"],
   alternates: {
-    canonical: "https://aorixis.com/compliance",
+    canonical: "/compliance",
+  },
+  openGraph: {
+    title: "Quality Control & Compliance Standards | Aorixis",
+    description: "Rigorously tested enterprise hardware meeting global compliance standards.",
+    url: "https://aorixis.com/compliance",
   },
 };
 

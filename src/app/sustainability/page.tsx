@@ -3,10 +3,15 @@ import SustainabilityContent from './SustainabilityContent';
 
 export const metadata: Metadata = {
   title: "Sustainability & Circular Economy Commitment",
-  description: "Reducing e-waste through the refurbishment and lifecycle extension of enterprise hardware. Our commitment to the circular economy and sustainable IT infrastructure.",
+  description: "Commitment to the circular economy and sustainable IT infrastructure by reducing e-waste through hardware refurbishment and lifecycle extension.",
   keywords: ["Sustainability", "Circular Economy", "E-waste Reduction", "Green IT", "Refurbished Tech"],
   alternates: {
-    canonical: "https://aorixis.com/sustainability",
+    canonical: "/sustainability",
+  },
+  openGraph: {
+    title: "Sustainability & Circular Economy | Aorixis",
+    description: "Reducing e-waste through the refurbishment and lifecycle extension of enterprise hardware.",
+    url: "https://aorixis.com/sustainability",
   },
 };
 

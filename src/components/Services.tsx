@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Wrench, Shield, GitMerge } from 'lucide-react';
+import Link from 'next/link';
+import { Wrench, Shield, GitMerge, ArrowRight } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './Services.module.css';
 
@@ -12,19 +13,22 @@ export default function Services() {
       title: "Hardware Procurement",
       description: "We supply enterprise-grade refurbished hardware from tier-1 OEMs directly from our extensive inventory. Every unit undergoes rigorous multi-point testing and quality assurance before dispatch.",
       icon: <Shield size={32} strokeWidth={1.5} />,
-      color: "var(--color-green)"
+      color: "var(--color-green)",
+      link: "/industries"
     },
     {
       title: "Custom Configuration",
       description: "Every server, storage, and networking solution can be built to your exact specifications, including CPU, memory, storage, and NIC configurations tailored to your workload.",
       icon: <Wrench size={32} strokeWidth={1.5} />,
-      color: "var(--color-orange)"
+      color: "var(--color-orange)",
+      link: "/compliance"
     },
     {
       title: "Technical Consultation",
-      description: "Our team of OEM-certified hardware engineers, data center infrastructure architects, and virtualization specialists provide hands-on guidance for integrating, scaling, and optimizing your compute environments both remotely and on-site.",
+      description: "Our team of OEM-certified hardware engineers, data center infrastructure architects, and virtualization specialists provide hands-on guidance for integrating, scaling, and optimizing your compute environments.",
       icon: <GitMerge size={32} strokeWidth={1.5} />,
-      color: "var(--color-blue)"
+      color: "var(--color-blue)",
+      link: "/logistics"
     }
   ];
 
@@ -61,6 +65,9 @@ export default function Services() {
                 <div className={styles.iconWrapper} style={{ color: service.color }}>{service.icon}</div>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
                 <p className={styles.cardText}>{service.description}</p>
+                <Link href={service.link} className={styles.learnMore}>
+                  Learn More <ArrowRight size={14} />
+                </Link>
               </Card>
             );
           })}

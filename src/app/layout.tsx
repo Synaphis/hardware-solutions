@@ -13,6 +13,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aorixis.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Aorixis | Enterprise IT Hardware Authority | Certified Servers, Storage & Networking",
     template: "%s | Aorixis",
@@ -22,6 +25,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Aorixis" }],
   creator: "Aorixis",
   publisher: "Aorixis",
+  applicationName: "Aorixis Portal",
+  category: "Enterprise IT Hardware",
   formatDetection: {
     email: false,
     address: false,

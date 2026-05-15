@@ -31,7 +31,7 @@ export default function Footer() {
             <div className={styles.brand}>
               <Image
                 src="/logo.svg"
-                alt="Aorixis"
+                alt="Aorixis - Certified Enterprise Hardware"
                 width={40}
                 height={40}
                 className={styles.logo}

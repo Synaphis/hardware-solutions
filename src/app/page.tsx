@@ -12,31 +12,47 @@ export const metadata: Metadata = {
   title: "Aorixis | Enterprise IT Hardware Authority | Certified Servers, Storage & Networking",
   description: "B2B supplier of certified Tier-1 IT infrastructure. Refurbished servers, storage, and networking with global shipping and technical support.",
   alternates: {
-    canonical: "https://aorixis.com",
+    canonical: "/",
   },
-  keywords: ["Enterprise Hardware", "Refurbished Servers US", "Data Center Storage", "B2B Hardware Supplier", "Refurbished Networking"],
+  openGraph: {
+    url: "https://aorixis.com",
+    type: "website",
+  }
 };
 
 export default function Home() {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Aorixis',
-    url: 'https://aorixis.com',
-    logo: 'https://aorixis.com/logo.png',
-    description: 'Enterprise IT hardware solutions specialist, providing refurbished servers, storage, and networking globally.',
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Aorixis',
+      url: 'https://aorixis.com',
+      logo: 'https://aorixis.com/logo.png',
+      description: 'Enterprise IT hardware solutions specialist, providing refurbished servers, storage, and networking globally.',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'US',
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-888-788-7812',
+        contactType: 'sales',
+        email: 'info@aorixis.com',
+        availableLanguage: 'English',
+      },
     },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+1-888-788-7812',
-      contactType: 'sales',
-      email: 'info@aorixis.com',
-      availableLanguage: 'English',
-    },
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Aorixis',
+      url: 'https://aorixis.com',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://aorixis.com/?s={search_term_string}',
+        'query-input': 'required name=search_term_string',
+      },
+    }
+  ];
 
   return (
     <>
